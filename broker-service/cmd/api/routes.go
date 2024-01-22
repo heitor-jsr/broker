@@ -12,12 +12,12 @@ func (app *Config) routes() http.Handler {
 	mux := chi.NewRouter()
 
 	mux.Use(cors.Handler(cors.Options{
-		AllowedOrigins:   []string{"https://*", "https://*"},
-		AllowedMethods:   []string{"GET", "POST", "DELETE", "OPTIONS"},
-		AllowedHeaders:   []string{"Accept", "authorization", "Content-Type", "X-CSRF-Token"},
-		ExposedHeaders:   []string{"Ling"},
+		AllowedOrigins:   []string{"https://*", "http://*"},
+		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
+		ExposedHeaders:   []string{"Link"},
 		AllowCredentials: true,
-		MaxAge:           3000,
+		MaxAge:           300,
 	}))
 
 	mux.Use(middleware.Heartbeat("/ping"))
