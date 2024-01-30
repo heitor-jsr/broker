@@ -11,6 +11,7 @@ type jsonResponse struct {
 	Error   bool   `json:"error"`
 	Message string `json:"message"`
 	Data    any    `json:"data,omitempty"`
+	Status  int    `json:"status,omitempty"`
 }
 
 // readJSON tries to read the body of a request and converts it into JSON
@@ -68,6 +69,6 @@ func (app *Config) errorJSON(w http.ResponseWriter, err error, status ...int) er
 	var payload jsonResponse
 	payload.Error = true
 	payload.Message = err.Error()
-
+	payload.Status = statusCode
 	return app.writeJSON(w, statusCode, payload)
 }

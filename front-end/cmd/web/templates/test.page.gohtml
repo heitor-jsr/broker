@@ -45,7 +45,7 @@
             action: "auth",
             auth: {
                 email: "admin@example.com",
-                password: "verysecret!",
+                password: "verysecret",
             }
         }
 
@@ -64,7 +64,7 @@
             sent.innerHTML = JSON.stringify(payload, undefined, 4);
             received.innerHTML = JSON.stringify(data, undefined, 4);
             if (data.error) {
-                output.innerHTML += `<br><strong>Error:</strong> ${data.message}`;
+                output.innerHTML += `<br><strong>Error:</strong> ${data.message} <br><strong>Status:</strong> ${data.status}`;
             } else {
                 output.innerHTML += `<br><strong>Response from broker service</strong>: ${data.message}`;
             }
