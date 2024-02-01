@@ -13,10 +13,10 @@ import (
 )
 
 const (
-	dockerPort = "80"
-	rpcPort    = "5001"
-	mongoURL   = "mongodb://mongo:27017"
-	grpcPort   = "50001"
+	webPort  = "8084"
+	rpcPort  = "5001"
+	mongoURL = "mongodb://mongo:27017"
+	grpcPort = "50001"
 )
 
 var client *mongo.Client
@@ -47,21 +47,29 @@ func main() {
 	}
 
 	// start web server
-	go app.serve()
-
-}
-
-func (app *Config) serve() {
+	// go app.serve()
 	srv := &http.Server{
-		Addr:    fmt.Sprintf(":%s", dockerPort),
+		Addr:    fmt.Sprintf(":%s", webPort),
 		Handler: app.routes(),
 	}
 
-	err := srv.ListenAndServe()
+	err = srv.ListenAndServe()
 	if err != nil {
-		log.Panic()
+		log.Panic(err)
 	}
 }
+
+// func (app *Config) serve() {
+// 	srv := &http.Server{
+// 		Addr:    fmt.Sprintf(":%s", webPort),
+// 		Handler: app.routes(),
+// 	}
+
+// 	err := srv.ListenAndServe()
+// 	if err != nil {
+// 		log.Panic()
+// 	}
+// }
 
 func connectToMongo() (*mongo.Client, error) {
 	clientOptions := options.Client().ApplyURI(mongoURL)

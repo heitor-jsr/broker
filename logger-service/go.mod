@@ -2,7 +2,11 @@ module log-service
 
 go 1.21.5
 
-require go.mongodb.org/mongo-driver v1.13.1
+require (
+	github.com/go-chi/chi/v5 v5.0.11
+	github.com/go-chi/cors v1.2.1
+	go.mongodb.org/mongo-driver v1.13.1
+)
 
 require (
 	github.com/golang/snappy v0.0.1 // indirect
