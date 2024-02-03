@@ -11,6 +11,12 @@
 		},
 		{
 			"path": "project"
+		},
+		{
+			"path": "logger-service"
+		},
+		{
+			"path": "mail-service"
 		}
 	],
 	"settings": {}
