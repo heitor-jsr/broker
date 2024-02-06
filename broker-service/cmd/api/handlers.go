@@ -152,7 +152,7 @@ func (app *Config) logItem(w http.ResponseWriter, entry LogPayload) {
 func (app *Config) sendMail(w http.ResponseWriter, msg MailPayload) {
 	jsonData, _ := json.MarshalIndent(msg, "", "\t")
 
-	mailServiceURL := "http://mail-service:80/send"
+	mailServiceURL := "http://mailer-service/send"
 
 	request, err := http.NewRequest("POST", mailServiceURL, bytes.NewBuffer(jsonData))
 	if err != nil {
